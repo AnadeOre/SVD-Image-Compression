@@ -18,8 +18,15 @@
 		<div class="divBody">
 			<canvas id="canvas" width="500" height="500"></canvas>
 			<div class="divInput">
-				<input type="range" class="input" id="Rank" name="rank" value="5" min="1" max="50" step="1">
-  				<p>Rank: <span class="inputname" id="value"></span></p>
+				<p>Rank: <span class="inputname" id="value"></span></p>
+				<input type="range" class="input" id="Rank" list="steplist" name="rank" value="5" min="0" max="100" step="5">
+					<datalist id="steplist">
+						<option>0</option>
+						<option>25</option>
+						<option>50</option>
+						<option>75</option>
+						<option>100</option>
+					</datalist>
 			</div>
 		</div>
 	</body>
