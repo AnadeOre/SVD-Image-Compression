@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
+    <script src="script.js" defer></script>
+    
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <form>
+        <input type="radio" id="original" name="color" value="original" checked/>
+        <label for="original">Original</label>
+
+        <input type="radio" id="grayscale" name="color" value="grayscale" />
+        <label for="grayscale">Grayscale</label>
+
+        <input type="radio" id="inverted" name="color" value="inverted" />
+        <label for="inverted">Inverted</label>
+      </form>
+</body>
+</html>
