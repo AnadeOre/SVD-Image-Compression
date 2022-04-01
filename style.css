@@ -10,6 +10,9 @@ body {
 	font-family: monospace;
 	color: rgba(255, 255, 255, 0.623);
 	font-size: 20px;
+	width: 80vw;
+	text-align: justify;
+	margin: auto;
 }
 
 .title {
