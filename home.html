@@ -37,7 +37,7 @@
 		<a href="/index.html" class="button">Image Compression</a>
     </div>
 		<div class="method">
-            <h2>Singular Value Decomposition</h2>
+            <h2 class="title">Singular Value Decomposition</h2>
 			<p>
 				The Singular Value Decomposition (SVD) states that for every matrix $A$ of size $m\times n$ there exist
                 two sets of vectors, $\{v_1, v_2,\cdots, v_n\}$ orthogonal in $\mathbb{R}^{n},$
@@ -87,7 +87,7 @@
             $$A = U\Sigma V^T$$
             <br>
             <p>The SVD of the matrix $A$.</p>
-			<h3>Image compression and the Eckart-Young-Mirsky Theorem</h3>
+			<h3 class="subtitle">Image compression and the Eckart-Young-Mirsky Theorem</h3>
 
             <p>
                 Given a matrix $A$ of size $m\times n$ and rank $r$, we know that for every $i>r$ $Av_i=0$, so there are
@@ -131,6 +131,7 @@
             that is setting for each pixel the array $\left[\frac{R+G+B}{3}, \frac{R+G+B}{3},\frac{R+G+B}{3}\right]$, doing so allows us
             to transform an image into a big matrix in which every value represents the average of colours in the corresponding pixel.
         </p>
+        <br>
         <p>
             Using what we've just learned about the SVD, we know due to the Eckart-Young-Mirsky theorem that the image matrix can be very well
             aproximated by one of smaller range, making the image lighter. This is what we do in the <a href="/index.html" class="link">Image Compression</a>

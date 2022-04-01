@@ -19,8 +19,20 @@ body {
 	-webkit-transition: -webkit-transform 0.3s ease-in-out;
 	-moz-transition: -moz-transform 0.3s ease-in-out;
 	transition: all 0.1s ease-in-out;
-	font-size: 40px;
+	font-size: 30px;
 	text-decoration: none;
+}
+
+.subtitle {
+	color: #19bc8b;
+	margin-top: 30px !important;
+	padding-bottom: 20px;
+	-webkit-transition: -webkit-transform 0.3s ease-in-out;
+	-moz-transition: -moz-transform 0.3s ease-in-out;
+	transition: all 0.1s ease-in-out;
+	font-size: 25px;
+	text-decoration: none;
+
 }
 
 .divBody {
@@ -104,27 +116,25 @@ input[type="range"]::-moz-range-track {
 		border-color: #e9bc8b;
 	}
 	
-	@media (min-width: 900px) {
+	@media (max-width: 900px) {
 		.title {
-			color: #19bc8b;
-			font-size: 50px;
-			align-items: center;
+			font-size: 20px;
+			text-align: center;
+			margin: auto;
 		}
-	
+		.subtitle {
+			font-size: 20px;
+			text-align: center;
+		}
 		a {
-			width: 200px;
+			width: auto;
+			font-size: 15px;
+		}
+		p {
+			text-align: justify;
+			margin: auto;
+			width: 80vw;
 		}
 	}
-	
 	
 
-@media (min-width: 900px) {
-	.title {
-		margin: auto;
-	}
-	.method {
-		margin-top: 20px;
-		margin-bottom: 20px;
-		width: 80vw;
-	}
-}
