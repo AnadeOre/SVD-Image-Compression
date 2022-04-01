@@ -62,7 +62,48 @@ input[type="range"]::-moz-range-track {
 	  }
 
 
-
+	.link-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-top: -150px;
+	}
+	
+	a {
+		color: #e9bc8b;
+		text-decoration: none;
+		text-transform: uppercase;
+		margin: 8px;
+		width: 80vw;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		border: 2px solid #19bc8b;
+		transition: 0.25s;
+		box-shadow: -0.3em -0.3em #e9bc8b;
+		font-weight: bold;
+		font-size: 15px;
+	}
+	
+	a:hover {
+		color: #1c222b;
+		box-shadow: 0 0 0 0 #e9bc8b, inset 6em 3.5em 0 0 #e9bc8b;
+		border-color: #e9bc8b;
+	}
+	
+	@media (min-width: 900px) {
+		.title {
+			color: #19bc8b;
+			font-size: 50px;
+			align-items: center;
+		}
+	
+		a {
+			width: 200px;
+		}
+	}
+	
 	
 
 @media (min-width: 900px) {

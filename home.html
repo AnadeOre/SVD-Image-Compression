@@ -1,26 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
-    <script src="script.js" defer></script>
-    
-</head>
-<body>
-    <canvas id="canvas" width="400" height="400"></canvas>
-    <form>
-        <input type="radio" id="original" name="color" value="original" checked/>
-        <label for="original">Original</label>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<script>
+			MathJax = {
+				tex: {
+					inlineMath: [
+						['$', '$'],
+						['\\(', '\\)'],
+					],
+					displayMath: [
+						// start/end delimiter pairs for display math
+						['$$', '$$'],
+						['\\[', '\\]'],
+					],
+				},
+				svg: {
+					fontCache: 'global',
+				},
+			};
+		</script>
+		<script src="check-for-tex.js" defer></script>
+		<script
+			type="text/javascript"
+			id="MathJax-script"
+			async
+			src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+		></script>
+		<title>SVD</title>
+	</head>
+	<body>
+        <div class="buttons-container">
+		<a href="/index.html" class="button-home">Image Compression</a>
+    </div>
+		<div class="method">
+			<p>
+				The Singular Value Decomposition (SVD) states that for every matrix $A$ of size $m\times n$ there exist
+                two sets of vectors, $\{v_1, v_2,\cdots, v_n\}$ orthogonal in $\mathbb{R}^{n},$
+                $\{u_1, u_2, \cdots, u_m\}$ orthogonal in $\mathbb{R}^m$ and real numbers $\sigma_1\geq\sigma_2\geq\cdots\geq \sigma_r>0$
+                such that
+            </p>
+			<br />
+            $$Av_i = \sigma_i u_i,\quad \forall i=1, \cdots r,$$
+            <br>
+            <p>where $r$ is the rank of the matrix $A$. And </p>
+			<br />
+			$$Av_j = 0\quad \forall j=r+1,\cdots, n.$$
+			<br />
+			<p>
+                In matricial notation:
+			</p>
+            <br>
+            $$A
+            \left[\begin{array}{ccccc}
+            &&&&\\
+            &&&&\\
+            \boldsymbol{v_1} & \hspace{-0.2cm}\cdots  &\hspace{-0.2cm}\boldsymbol{v_r} & \hspace{-0.2cm}\cdots & \hspace{-0.2cm}\boldsymbol{v_n}\\
+            &&&&\\
+            &&&&
+            \end{array}\right]=\left[\begin{array}{ccccc}
+            &&&&\\
+            &&&&\\
+            \boldsymbol{u_1} & \hspace{-0.2cm}\cdots  &\hspace{-0.2cm}\boldsymbol{u_r} & \hspace{-0.2cm}\cdots & \hspace{-0.2cm}\boldsymbol{u_m}\\
+            &&&&\\
+            &&&&
+            \end{array}\right]\left[\begin{array}{ccc|c}
+            \sigma_1 & & & \\
+            & \ddots & & 0\\
+            & & \sigma_r & \\
+            \hline
+            & 0 & & 0	 
+            \end{array}\right]$$
+            <br>
+			<p>
+                That is
+			</p>
+			<br />
+            $$AV = U\Sigma$$
+            <p>As the vectors in the set $\{v_1, v_2,\cdots, v_n\}$ are orthonormal then the matrix $V$ with columns $v_i$ is orthogonal,
+                that is $VV^{t} = I_n$. Using this and multiplying by $V^T$ on both sides of the expression we get
+            </p>
+            <br>
+            $$A = U\Sigma V^T$$
+            <br>
+            <p>The SVD of the matrix $A$.</p>
+			<h3>Image compression and the Eckart Young Theorem</h3>
+		</div>
 
-        <input type="radio" id="grayscale" name="color" value="grayscale" />
-        <label for="grayscale">Grayscale</label>
-
-        <input type="radio" id="inverted" name="color" value="inverted" />
-        <label for="inverted">Inverted</label>
-      </form>
-</body>
+	</body>
 </html>
