@@ -62,31 +62,43 @@ input[type="range"]::-moz-range-track {
 	  }
 
 
-	.link-container {
+	.buttons-container {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		margin-top: -150px;
+		/* margin-top: -150px; */
 	}
 	
-	a {
+	.button {
 		color: #e9bc8b;
 		text-decoration: none;
 		text-transform: uppercase;
-		margin: 8px;
-		width: 80vw;
+		margin: 20px auto;
+		width: 200px;
+		padding: 15px;
 		height: 50px;
 		text-align: center;
-		line-height: 50px;
+		line-height: 100%;
 		border: 2px solid #19bc8b;
 		transition: 0.25s;
 		box-shadow: -0.3em -0.3em #e9bc8b;
 		font-weight: bold;
 		font-size: 15px;
 	}
-	
-	a:hover {
+	.link {
+		color: #e9bc8b;
+	}
+
+	.link:visited {
+		color: #e49b4e;
+	}
+
+	.link:hover {
+		color: #19bc8b;
+	}
+
+	.button:hover {
 		color: #1c222b;
 		box-shadow: 0 0 0 0 #e9bc8b, inset 6em 3.5em 0 0 #e9bc8b;
 		border-color: #e9bc8b;
