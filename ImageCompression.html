@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="script.js" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+		<script src="https://unpkg.com/svd-js" type="application/javascript"></script> 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.2/math.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
+		<link rel="icon" href="Tiger.png" type="image/png" />
+		<link rel="stylesheet" href="style.css" />
+		<title>SVD</title>
+	</head>
+	<body>
+		<div class="buttons-container">
+			<a class="button" href="/index.html">Home</a>
+		</div>		<div class="divBody">
+			<canvas id="canvas" width="500" height="500"></canvas>
+			<div class="divInput">
+				<p>Rank: <span class="inputname" id="value"></span></p>
+				<input type="range" class="input" id="Rank" list="steplist" name="rank" value="50" min="0" max="100" step="5">
+					<datalist id="steplist">
+						<option>0</option>
+						<option>25</option>
+						<option>50</option>
+						<option>75</option>
+						<option>100</option>
+					</datalist>
+			</div>
+		</div>
+		<footer class="footer" target="_blank">Built by <a href="https://github.com/AnadeOre" class="link">Ana Emilia de Orellana</a></footer>
+	</body>
+</html>

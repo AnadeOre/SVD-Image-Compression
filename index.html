@@ -4,32 +4,142 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script src="script.js" defer></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
-		<script src="https://unpkg.com/svd-js" type="application/javascript"></script> 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.2/math.min.js"></script>
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
-		<link rel="icon" href="Tiger.png" type="image/png" />
 		<link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="Tiger.png" type="image/png" />
+
+		<script>
+			MathJax = {
+				tex: {
+					inlineMath: [
+						['$', '$'],
+						['\\(', '\\)'],
+					],
+					displayMath: [
+						// start/end delimiter pairs for display math
+						['$$', '$$'],
+						['\\[', '\\]'],
+					],
+				},
+				svg: {
+					fontCache: 'global',
+				},
+			};
+		</script>
+		<script src="check-for-tex.js" defer></script>
+		<script
+			type="text/javascript"
+			id="MathJax-script"
+			async
+			src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+		></script>
 		<title>SVD</title>
 	</head>
 	<body>
-		<div class="buttons-container">
-			<a class="button" href="/home.html">Home</a>
-		</div>		<div class="divBody">
-			<canvas id="canvas" width="500" height="500"></canvas>
-			<div class="divInput">
-				<p>Rank: <span class="inputname" id="value"></span></p>
-				<input type="range" class="input" id="Rank" list="steplist" name="rank" value="50" min="0" max="100" step="5">
-					<datalist id="steplist">
-						<option>0</option>
-						<option>25</option>
-						<option>50</option>
-						<option>75</option>
-						<option>100</option>
-					</datalist>
-			</div>
+        <div class="buttons-container">
+		<a href="/ImageCompression.html" class="button">Image Compression</a>
+    </div>
+		<div class="method">
+            <h2 class="title">Singular Value Decomposition</h2>
+			<p>
+				The Singular Value Decomposition (SVD) states that for every matrix $A$ of size $m\times n$ there exist
+                two sets of vectors, $\{v_1, v_2,\cdots, v_n\}$ orthogonal in $\mathbb{R}^{n},$
+                $\{u_1, u_2, \cdots, u_m\}$ orthogonal in $\mathbb{R}^m$ and real numbers $\sigma_1\geq\sigma_2\geq\cdots\geq \sigma_r>0$
+                such that
+            </p>
+			<br />
+            $$Av_i = \sigma_i u_i,\quad \forall i=1, \cdots r,$$
+            <br>
+            <p>where $r$ is the rank of the matrix $A$. And </p>
+			<br />
+			$$Av_j = 0\quad \forall j=r+1,\cdots, n.$$
+			<br />
+			<p>
+                In matricial notation:
+			</p>
+            <br>
+            $$A
+            \left[\begin{array}{ccccc}
+            &&&&\\
+            &&&&\\
+            \boldsymbol{v_1} & \hspace{-0.2cm}\cdots  &\hspace{-0.2cm}\boldsymbol{v_r} & \hspace{-0.2cm}\cdots & \hspace{-0.2cm}\boldsymbol{v_n}\\
+            &&&&\\
+            &&&&
+            \end{array}\right]=\left[\begin{array}{ccccc}
+            &&&&\\
+            &&&&\\
+            \boldsymbol{u_1} & \hspace{-0.2cm}\cdots  &\hspace{-0.2cm}\boldsymbol{u_r} & \hspace{-0.2cm}\cdots & \hspace{-0.2cm}\boldsymbol{u_m}\\
+            &&&&\\
+            &&&&
+            \end{array}\right]\left[\begin{array}{ccc|c}
+            \sigma_1 & & & \\
+            & \ddots & & 0\\
+            & & \sigma_r & \\
+            \hline
+            & 0 & & 0	 
+            \end{array}\right]$$
+            <br>
+			<p>
+                That is
+			</p>
+			<br />
+            $$AV = U\Sigma$$
+            <p>As the vectors in the set $\{v_1, v_2,\cdots, v_n\}$ are orthonormal then the matrix $V$ with columns $v_i$ is orthogonal,
+                that is $VV^{t} = I_n$. Using this and multiplying by $V^T$ on both sides of the expression we get
+            </p>
+            $$A = U\Sigma V^T$$
+            <br>
+            <p>The SVD of the matrix $A$.</p>
+			<h3 class="subtitle">Image compression and the Eckart-Young-Mirsky Theorem</h3>
+
+            <p>
+                Given a matrix $A$ of size $m\times n$ and rank $r$, we know that for every $i>r$ $Av_i=0$, so there are
+                parts in $AV = U\Sigma$ that don't contribute to the multiplication. The important part in the product of those
+                matrices is in the first $r$ sigma vectors and sigma values, this way we get
+            </p>
+            <br>
+            $$A
+            \left[\begin{array}{ccc}
+            &&\\
+            \boldsymbol{v_1} & \hspace{-0.2cm}\cdots & \hspace{-0.2cm}\boldsymbol{v_r}\\
+            &&
+            \end{array}\right]=\left[\begin{array}{ccc}
+            &&\\
+            \boldsymbol{u_1} & \hspace{-0.2cm}\cdots & \hspace{-0.2cm}\boldsymbol{u_r}\\
+            &&
+            \end{array}\right]\left[\begin{array}{ccc}
+            \sigma_1 & & \\
+            & \ddots & \\
+            & & \sigma_r  
+            \end{array}\right]$$
+            <br>
+            <p>And we still have $V_rV_r^T = I_r$ so multiplying on both sides by $V_r^T$ we get to the
+                 <b>reduced SVD decomposition of </b>$\boldsymbol{A}$
+            </p>
+            $$A_r = U_r\Sigma_r V_r^T$$
+            <br>
+            <p>
+            The Eckart-Young-Mirsky theorem states that for every unitarily invariant norm $||\cdot||$ then the best $k$-rank
+            approximation of a matrix $A$ is $A_k$, that is
+        </p>
+            $$\min_{r(B)=k}||A-B|| = ||A-A_k||.$$
+        <br>
+        <p>This is particularly useful in data science and we shall show how good this approximations are by 
+            compressing an image.
+            An image is a 2-dimensional array of pixels, each pixel, represented with a square is also an array formed by four numerical
+            values RGBA, this values represent "how much" Red, Green, Blue and Alpha (alpha is the transparency of the image) there is in
+            that particular pixel, this values range from $0$ to $255$.
+        </p>
+        <p>An image can be converted into greyscale by setting the three values of RGB to the average of them in the original image, 
+            that is setting for each pixel the array $\left[\frac{R+G+B}{3}, \frac{R+G+B}{3},\frac{R+G+B}{3}\right]$, doing so allows us
+            to transform an image into a big matrix in which every value represents the average of colours in the corresponding pixel.
+        </p>
+        <br>
+        <p>
+            Using what we've just learned about the SVD, we know due to the Eckart-Young-Mirsky theorem that the image matrix can be very well
+            aproximated by one of smaller range, making the image lighter. This is what we do in the <a href="/ImageCompression.html" class="link">Image Compression</a>
+            section.
+        </p>
 		</div>
-		<footer class="footer" target="_blank">Built by <a href="https://github.com/AnadeOre" class="link">Ana Emilia de Orellana</a></footer>
+        <footer class="footer" target="_blank">Built by <a href="https://github.com/AnadeOre" class="link">Ana Emilia de Orellana</a></footer>
 	</body>
 </html>
